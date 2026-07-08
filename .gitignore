@@ -3,9 +3,14 @@
 .env.*
 *.env
 
+
 # Virtual environments
 multimod/
 venv/
 .venv/
 env/
 ENV/
+
+.*pyc
+.pyc*
+__pycache__
