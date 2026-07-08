@@ -2,7 +2,7 @@ import streamlit as st
 from dispatcher import get_response, apply_persona, trim_history
 
 st.set_page_config(
-    page_title="Multi-LLM Chatbot",
+    page_title="MetaVerse - A Multi-LLM Chatbot",
     page_icon="🤖",
     layout="wide",
 )

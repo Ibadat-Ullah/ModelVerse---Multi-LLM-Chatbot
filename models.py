@@ -60,11 +60,21 @@ def convert_to_gemini_format(messages):
 
 # Gemini Chat Completion
 def call_gemini(messages, temperature):
+    system_prompt = None
+    conversation = []
+
+    for msg in messages:
+        if msg["role"] == "system":
+            system_prompt = msg["content"]
+        else:
+            conversation.append(msg)
+
     response = geminiClient.models.generate_content(
         model="gemini-2.5-flash-lite",
-        contents=convert_to_gemini_format(messages),
+        contents=convert_to_gemini_format(conversation),
         config=types.GenerateContentConfig(
             temperature=temperature,
+            system_instruction=system_prompt,
             thinking_config=types.ThinkingConfig(thinking_budget=0),
         ),
     )
@@ -115,4 +125,3 @@ def call_zai(messages, temperature):
     )
     print("ZAI")
     return zaiResponse.choices[0].message.content
-
