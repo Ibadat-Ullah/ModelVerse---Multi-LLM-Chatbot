@@ -1,4 +1,5 @@
 import streamlit as st
+from dispatcher import get_response, apply_persona, trim_history
 
 st.set_page_config(
     page_title="Multi-LLM Chatbot",
@@ -95,7 +96,11 @@ if prompt:
         }
     )
 
-    reply = "🤖 **UI Demo**\n\n" "API integration will be added in the next step."
+    trimmed = trim_history(st.session_state.messages)
+    final_messages = apply_persona(persona, trimmed)
+
+    with st.spinner(f"🤔 {model} is thinking..."):
+        reply = get_response(model, final_messages, temperature)
 
     with st.chat_message("assistant"):
         st.markdown(reply)
