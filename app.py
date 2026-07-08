@@ -1,5 +1,7 @@
 import streamlit as st
 from dispatcher import get_response, apply_persona, trim_history
+import uuid
+from memory import save_chat, list_saved_chats, load_chat, delete_chat
 
 st.set_page_config(
     page_title="MetaVerse - A Multi-LLM Chatbot",
@@ -9,6 +11,9 @@ st.set_page_config(
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
+
+if "chat_id" not in st.session_state:
+    st.session_state.chat_id = uuid.uuid4().hex
 
 left, right = st.columns([4, 1])
 
@@ -61,11 +66,36 @@ with st.sidebar:
 
     if st.button("🆕 New Chat", use_container_width=True):
         st.session_state.messages = []
+        st.session_state.chat_id = uuid.uuid4().hex
         st.rerun()
 
-    st.button("💾 Save Chat", use_container_width=True)
+    if st.button("💾 Save Chat", use_container_width=True):
+        if st.session_state.messages:
+            title = st.session_state.messages[0]["content"][:40]
+            save_chat(
+                st.session_state.chat_id,
+                title,
+                model,
+                persona,
+                st.session_state.messages,
+            )
+            st.sidebar.success("Saved")
 
-    st.button("📂 Export Chat", use_container_width=True)
+    st.divider()
+    st.subheader("🗂️ Saved Chats")
+
+    for chat_id, title in list_saved_chats().items():
+        col1, col2 = st.columns([4, 1])
+
+        if col1.button(title, key=f"load_{chat_id}", use_container_width=True):
+            chat = load_chat(chat_id)
+            st.session_state.chat_id = chat_id
+            st.session_state.messages = chat["messages"]
+            st.rerun()
+
+        if col2.button(" 🗑️ ", key=f"del_{chat_id}"):
+            delete_chat(chat_id)
+            st.rerun()
 
 st.caption(
     f"📦 **Model:** {model} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; "
