@@ -61,7 +61,7 @@ with st.sidebar:
         "Temperature",
         0.0,
         2.0,
-        0.7,
+        1.0,
     )
 
     if st.button("🆕 New Chat", use_container_width=True):
