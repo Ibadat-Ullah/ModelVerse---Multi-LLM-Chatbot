@@ -33,7 +33,7 @@ with st.sidebar:
     model = st.selectbox(
         "Model",
         [
-            "gpt-5.4-mini",
+            "gpt-5.6-luna",
             "llama-3.1-8b-instant",
             "gemini-2.5-flash-lite",
             "qwen/qwen3.6-27b",

@@ -12,7 +12,7 @@ from models import (
 from personas import PERSONAS
 
 MODEL_REGISTRY = {
-    "gpt-5.4-mini": {"function": call_openai, "context_window": 128000},
+    "gpt-5.6-luna": {"function": call_openai, "context_window": 128000},
     "llama-3.1-8b-instant": {"function": call_groq_llama, "context_window": 131072},
     "gemini-2.5-flash-lite": {"function": call_gemini, "context_window": 1000000},
     "qwen/qwen3.6-27b": {"function": call_groq_qwen, "context_window": 131072},
@@ -42,5 +42,3 @@ def get_response(model_label, messages, temperature):
         return entry["function"](messages, temperature)
     except Exception as e:
         return f"⚠️ Error from {model_label}: {e}"
-
-

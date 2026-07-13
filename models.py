@@ -34,7 +34,7 @@ zaiClient = ZaiClient(api_key=ZAI_API)
 # OpenAI Chat Completion
 def call_openai(messages, temperature):
     response = openaiClient.chat.completions.create(
-        model="gpt-5.4-mini", messages=messages, temperature=temperature
+        model="gpt-5.6-luna", messages=messages, temperature=temperature
     )
     print("OPENAI")
     return response.choices[0].message.content
