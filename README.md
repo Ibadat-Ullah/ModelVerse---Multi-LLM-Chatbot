@@ -95,7 +95,3 @@ The app will open at `http://localhost:8501`.
 - Add streaming responses instead of waiting for the full reply.
 - Add per-model token/cost tracking.
 - Unify the app's display name (currently set as "MetaVerse" in the page config but "ModelVerse" in the title).
-
-## License
-
-Add a license of your choice (e.g. MIT) before publishing publicly.
