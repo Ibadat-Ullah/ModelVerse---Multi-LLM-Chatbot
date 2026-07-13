@@ -18,7 +18,7 @@ if "chat_id" not in st.session_state:
 left, right = st.columns([4, 1])
 
 with left:
-    st.title("🤖 ModelVerse - Multi-LLM Chatbot")
+    st.title("ModelVerse - Multi-LLM Chatbot")
     st.caption("Interact with multiple AI models in one place.")
 
 with right:
