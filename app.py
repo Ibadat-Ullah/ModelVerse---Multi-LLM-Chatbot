@@ -22,7 +22,7 @@ with left:
     st.caption("Interact with multiple AI models in one place.")
 
 with right:
-    st.subheader("👥 Contributors")
+    st.subheader("Contributors")
     st.caption("Ma'am Aisha Khan (Instructor)")
     st.caption("Ibadat Ullah (Student)")
 
