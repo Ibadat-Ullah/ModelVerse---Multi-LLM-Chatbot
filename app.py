@@ -4,7 +4,7 @@ import uuid
 from memory import save_chat, list_saved_chats, load_chat, delete_chat
 
 st.set_page_config(
-    page_title="MetaVerse - A Multi-LLM Chatbot",
+    page_title="ModelVerse - A Multi-LLM Chatbot",
     page_icon="🤖",
     layout="wide",
 )
