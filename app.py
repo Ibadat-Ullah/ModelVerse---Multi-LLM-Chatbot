@@ -64,12 +64,12 @@ with st.sidebar:
         1.0,
     )
 
-    if st.button("🆕 New Chat", use_container_width=True):
+    if st.button("New Chat", use_container_width=True):
         st.session_state.messages = []
         st.session_state.chat_id = uuid.uuid4().hex
         st.rerun()
 
-    if st.button("💾 Save Chat", use_container_width=True):
+    if st.button("Save Chat", use_container_width=True):
         if st.session_state.messages:
             title = st.session_state.messages[0]["content"][:40]
             save_chat(
@@ -82,7 +82,7 @@ with st.sidebar:
             st.sidebar.success("Saved")
 
     st.divider()
-    st.subheader("🗂️ Saved Chats")
+    st.subheader("Saved Chats")
 
     for chat_id, title in list_saved_chats().items():
         col1, col2 = st.columns([4, 1])
@@ -105,7 +105,7 @@ st.caption(
 st.divider()
 
 if len(st.session_state.messages) == 0:
-    st.markdown("### 👋 Welcome")
+    st.markdown("###Welcome")
     st.caption("Select a model from the sidebar and start chatting.")
 
 for message in st.session_state.messages:
@@ -129,7 +129,7 @@ if prompt:
     trimmed = trim_history(st.session_state.messages)
     final_messages = apply_persona(persona, trimmed)
 
-    with st.spinner(f"🤔 {model} is thinking..."):
+    with st.spinner(f"{model} is thinking..."):
         reply = get_response(model, final_messages, temperature)
 
     with st.chat_message("assistant"):
