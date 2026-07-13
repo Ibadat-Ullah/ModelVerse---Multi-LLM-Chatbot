@@ -98,14 +98,14 @@ with st.sidebar:
             st.rerun()
 
 st.caption(
-    f"📦 **Model:** {model} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; "
-    f"🎭 **Persona:** {persona}"
+    f"**Model:** {model} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; "
+    f"**Persona:** {persona}"
 )
 
 st.divider()
 
 if len(st.session_state.messages) == 0:
-    st.markdown("###Welcome")
+    st.markdown("### Welcome")
     st.caption("Select a model from the sidebar and start chatting.")
 
 for message in st.session_state.messages:
