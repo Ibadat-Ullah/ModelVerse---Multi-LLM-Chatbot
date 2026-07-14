@@ -69,18 +69,6 @@ with st.sidebar:
         st.session_state.chat_id = uuid.uuid4().hex
         st.rerun()
 
-    if st.button("Save Chat", use_container_width=True):
-        if st.session_state.messages:
-            title = st.session_state.messages[0]["content"][:40]
-            save_chat(
-                st.session_state.chat_id,
-                title,
-                model,
-                persona,
-                st.session_state.messages,
-            )
-            st.sidebar.success("Saved")
-
     st.divider()
     st.subheader("Saved Chats")
 
@@ -141,3 +129,14 @@ if prompt:
             "content": reply,
         }
     )
+    title = st.session_state.messages[0]["content"][:40]
+    save_chat(
+        st.session_state.chat_id,
+        title,
+        model,
+        persona,
+        st.session_state.messages,
+    )
+
+    if prompt:
+        st.rerun()
