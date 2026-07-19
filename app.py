@@ -57,12 +57,40 @@ with st.sidebar:
         ],
     )
 
-    temperature = st.slider(
-        "Temperature",
-        0.0,
-        2.0,
-        1.0,
-    )
+    # temperature = st.slider(
+    #     "Temperature",
+    #     0.0,
+    #     2.0,
+    #     1.0,
+    # )
+
+    if model == "gpt-5.6-luna":
+        temperature = 1.0
+        st.slider(
+            "Temperature",
+            1.0,
+            2.0,
+            1.0,
+            step=0.1,
+            disabled=True,
+            help="gpt-5.6-luna always runs at a fixed temperature of 1.0.",
+        )
+    elif model == "mistral-small-latest":
+        temperature = st.slider(
+            "Temperature",
+            0.0,
+            1.5,
+            1.0,
+            step=0.1,
+        )
+    else:
+        temperature = st.slider(
+            "Temperature",
+            0.0,
+            2.0,
+            1.0,
+            step=0.1,
+        )
 
     if st.button("New Chat", use_container_width=True):
         st.session_state.messages = []
