@@ -57,13 +57,6 @@ with st.sidebar:
         ],
     )
 
-    # temperature = st.slider(
-    #     "Temperature",
-    #     0.0,
-    #     2.0,
-    #     1.0,
-    # )
-
     if model == "gpt-5.6-luna":
         temperature = 1.0
         st.slider(
