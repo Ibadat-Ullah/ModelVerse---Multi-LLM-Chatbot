@@ -31,7 +31,7 @@ A single Streamlit interface for chatting with multiple large language models fr
 ## Project structure
 
 ```
-.
+. 
 ├── app.py              # Streamlit UI: layout, sidebar controls, chat rendering, session state
 ├── dispatcher.py       # Routes requests to the right model function, applies persona + history trimming
 ├── models.py           # Provider-specific API client setup and chat-completion wrappers
